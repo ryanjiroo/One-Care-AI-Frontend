@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "325126223708",
+    "project_id": "capstone-458510",
+    "storage_bucket": "capstone-458510.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:325126223708:android:fe41f0a3225f710d74f399",
+        "android_client_info": {
+          "package_name": "com.example.one_care_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHZ4lxCsMJtQ2SyKzuEja9-XuAzIPTUvQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
