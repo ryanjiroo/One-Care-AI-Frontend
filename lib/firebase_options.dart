@@ -3,17 +3,8 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-/// Default [FirebaseOptions] for use with your Firebase apps.
-///
-/// Example:
-/// ```dart
-/// import 'firebase_options.dart';
-/// // ...
-/// await Firebase.initializeApp(
-///   options: DefaultFirebaseOptions.currentPlatform,
-/// );
-/// ```
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
@@ -40,50 +31,56 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCYgSVIB19TuyKVTPGnbt8RRNgZEMnsITM',
-    appId: '1:325126223708:web:290d392ff2c6cd9b74f399',
-    messagingSenderId: '325126223708',
-    projectId: 'capstone-458510',
-    authDomain: 'capstone-458510.firebaseapp.com',
-    storageBucket: 'capstone-458510.firebasestorage.app',
-    measurementId: 'G-VGGPQNEKJN',
+  // Mengambil nilai dari .env atau memberikan string kosong jika null
+  static final String _messagingSenderId =
+      dotenv.env['FIREBASE_MESSAGING_SENDER_ID'] ?? '';
+  static final String _projectId = dotenv.env['FIREBASE_PROJECT_ID'] ?? '';
+  static final String _storageBucket =
+      dotenv.env['FIREBASE_STORAGE_BUCKET'] ?? '';
+
+  static final FirebaseOptions web = FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_WEB_API_KEY'] ?? '',
+    appId: dotenv.env['FIREBASE_WEB_APP_ID'] ?? '',
+    messagingSenderId: _messagingSenderId,
+    projectId: _projectId,
+    authDomain: dotenv.env['FIREBASE_WEB_AUTH_DOMAIN'] ?? '',
+    storageBucket: _storageBucket,
+    measurementId: dotenv.env['FIREBASE_WEB_MEASUREMENT_ID'] ?? '',
   );
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDHZ4lxCsMJtQ2SyKzuEja9-XuAzIPTUvQ',
-    appId: '1:325126223708:android:fe41f0a3225f710d74f399',
-    messagingSenderId: '325126223708',
-    projectId: 'capstone-458510',
-    storageBucket: 'capstone-458510.firebasestorage.app',
+  static final FirebaseOptions android = FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_ANDROID_API_KEY'] ?? '',
+    appId: dotenv.env['FIREBASE_ANDROID_APP_ID'] ?? '',
+    messagingSenderId: _messagingSenderId,
+    projectId: _projectId,
+    storageBucket: _storageBucket,
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDTjxKmTlLm5LZFLo-FoOilMqinwYfu9Pg',
-    appId: '1:325126223708:ios:aa6c2ea31249a5e074f399',
-    messagingSenderId: '325126223708',
-    projectId: 'capstone-458510',
-    storageBucket: 'capstone-458510.firebasestorage.app',
-    iosBundleId: 'com.example.oneCareApp',
+  static final FirebaseOptions ios = FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_IOS_API_KEY'] ?? '',
+    appId: dotenv.env['FIREBASE_IOS_APP_ID'] ?? '',
+    messagingSenderId: _messagingSenderId,
+    projectId: _projectId,
+    storageBucket: _storageBucket,
+    iosBundleId: dotenv.env['FIREBASE_IOS_BUNDLE_ID'] ?? '',
   );
 
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDTjxKmTlLm5LZFLo-FoOilMqinwYfu9Pg',
-    appId: '1:325126223708:ios:aa6c2ea31249a5e074f399',
-    messagingSenderId: '325126223708',
-    projectId: 'capstone-458510',
-    storageBucket: 'capstone-458510.firebasestorage.app',
-    iosBundleId: 'com.example.oneCareApp',
+  static final FirebaseOptions macos = FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_IOS_API_KEY'] ?? '', // Menggunakan API Key iOS
+    appId: dotenv.env['FIREBASE_IOS_APP_ID'] ?? '', // Menggunakan App ID iOS
+    messagingSenderId: _messagingSenderId,
+    projectId: _projectId,
+    storageBucket: _storageBucket,
+    iosBundleId: dotenv.env['FIREBASE_IOS_BUNDLE_ID'] ?? '',
   );
 
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCYgSVIB19TuyKVTPGnbt8RRNgZEMnsITM',
-    appId: '1:325126223708:web:945171622067e5cf74f399',
-    messagingSenderId: '325126223708',
-    projectId: 'capstone-458510',
-    authDomain: 'capstone-458510.firebaseapp.com',
-    storageBucket: 'capstone-458510.firebasestorage.app',
-    measurementId: 'G-FT6CKCWVXK',
+  static final FirebaseOptions windows = FirebaseOptions(
+    apiKey: dotenv.env['FIREBASE_WEB_API_KEY'] ?? '', // Menggunakan API Key Web
+    appId: dotenv.env['FIREBASE_WINDOWS_APP_ID'] ?? '',
+    messagingSenderId: _messagingSenderId,
+    projectId: _projectId,
+    authDomain: dotenv.env['FIREBASE_WEB_AUTH_DOMAIN'] ?? '',
+    storageBucket: _storageBucket,
+    measurementId: dotenv.env['FIREBASE_WINDOWS_MEASUREMENT_ID'] ?? '',
   );
-
 }
