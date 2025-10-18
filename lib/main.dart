@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:camera/camera.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart'; // <-- BARIS TAMBAHAN
+
 import 'firebase_options.dart';
 import 'pages/login_page.dart';
 
@@ -8,7 +10,10 @@ void main() async {
   // Pastikan semuanya siap sebelum menjalankan aplikasi
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Lakukan semua proses inisialisasi di sini
+  // BARIS TAMBAHAN: Muat file .env sebelum inisialisasi Firebase
+  await dotenv.load(fileName: ".env");
+
+  // KODE SEBELUMNYA: Tetap ada dan tidak diubah
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await availableCameras();
 
